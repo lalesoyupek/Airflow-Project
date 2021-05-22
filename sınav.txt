@@ -1,0 +1,47 @@
+
+WHAT IS AIRFLOW
+Dynamıc
+Scalable
+Interactive
+Extensible --geliştirilebilir
+
+Airflow is not a streaming or a data processing framework
+dont use airflow like spark
+dont try to process terabytes of data in airflow 
+Airflow is best orchestrator - create dynamic data pipeline and execute task
+
+CORE COMPONENTS
+Web Server: Apache Airflow’s Web UI that displays the status of DAGs. And also it provides an interface to read logs, trigger DAGs, or only tasks.
+Scheduler: Scheduler is a mechanism that decides which tasks need to be scheduled, queue, run, wait, etc.
+MetaData DataBase:  The Airflow metadata database stores configurations, such as variables and connections, user information, roles, and policies. It is also the Airflow Scheduler's source of truth for all metadata regarding DAGs, schedule intervals, statistics from each run, and tasks. https://www.astronomer.io/guides/airflow-database 
+Executor: Executors are the mechanism by which tasks get run. There are a few different varieties of executors.
+
+Apache Airflow Executors
+Currently, Apache Airflow has 6 types of executors. 
+
+Sequential Executor (Single Node)
+Local Executor (Single Node)
+Celery Executor (Multi-Node)
+Dask Executor (Multi-Node) 
+Kubernetes Executor (Multi-Node) 
+Scaling Out with Mesos (Multi-Node) 
+
+Executor: how your tasks are exectuded
+Worker: Where your tasks are exectuded
+
+Core Components https://www.astronomer.io/guides/airflow-components 
+Apache Airflow consists of 4 core components:
+
+Webserver Airflow's UI.
+At its core, this is just a Flask app that displays the status of your jobs and provides an interface to interact with the database and reads logs from a remote file store (S3, Google Cloud Storage, AzureBlobs, ElasticSearch etc.).
+
+Scheduler This is responsible for scheduling jobs.
+
+This is a multi-threaded Python process that uses the DAG object with the state of tasks in the metadata database to decide what tasks need to be run, when they need to be run, and where they are run.
+
+Executor The mechanism by which work actually gets done.
+
+There are several executors, each with strengths and weaknesses.
+
+Metadata Database A database (usually PostgresDB or MySql, but can be anything with SQLAlchemy support) that determines how the other components interact. The scheduler stores and updates task statuses, which the Webserver then uses to display job information.
+
